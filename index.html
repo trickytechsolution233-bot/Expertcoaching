@@ -341,7 +341,34 @@
   .fab:hover{ transform:translateY(-3px) scale(1.05);}
   .fab-wa{ background:#25D366;}
   .fab-call{ background:var(--rust);}
+  .fab-review{ background:#4285F4;}
   .fab-top{ background:var(--navy); width:42px; height:42px; align-self:flex-end; opacity:0.85;}
+
+  /* ===== LAUNCH POPUP ===== */
+  #launchPopup{
+    position:fixed; inset:0; z-index:9998; background:rgba(15,32,56,0.72);
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease;
+  }
+  #launchPopup.show{ opacity:1; visibility:visible;}
+  .launch-popup-card{
+    background:#fff; border-radius:16px; max-width:400px; width:100%; padding:32px 26px 26px;
+    text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.35);
+    transform:translateY(18px) scale(.97); transition:transform .35s ease;
+  }
+  #launchPopup.show .launch-popup-card{ transform:translateY(0) scale(1);}
+  .launch-popup-close{
+    position:absolute; right:14px; top:14px; background:#f0ede4; border:none; width:28px; height:28px;
+    border-radius:50%; cursor:pointer; font-size:15px; line-height:1; color:var(--navy);
+  }
+  .launch-popup-close:hover{ background:#e4e0d2;}
+  .launch-popup-emoji{ font-size:40px; margin-bottom:10px;}
+  .launch-popup-card h3{ font-size:20px; color:var(--navy); margin-bottom:8px;}
+  .launch-popup-card p{ font-size:14px; color:#555; line-height:1.5; margin-bottom:20px;}
+  .launch-popup-card .btn{ width:100%; justify-content:center;}
+  @media (max-width:420px){
+    .launch-popup-card{ padding:26px 20px 20px;}
+  }
 
   /* ===== ANIM ===== */
   .reveal{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;}
@@ -408,7 +435,7 @@
   .loader-logo img{ width:100%; height:100%; object-fit:cover;}
   .loader-text{ font-family:var(--display); color:#fff; font-size:15px; letter-spacing:.03em; text-align:center; padding:0 20px;}
   .loader-bar{ width:140px; height:3px; background:rgba(245,241,230,0.2); border-radius:3px; overflow:hidden;}
-  .loader-bar span{ display:block; height:100%; width:0%; background:var(--gold); animation:loaderFill 2s ease forwards;}
+  .loader-bar span{ display:block; height:100%; width:0%; background:var(--gold); animation:loaderFill 3s ease forwards;}
   @keyframes loaderPulse{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.06);} }
   @keyframes loaderFill{ from{ width:0%;} to{ width:100%;} }
   @media (prefers-reduced-motion: reduce){
@@ -416,14 +443,49 @@
     .loader-logo{ animation:none;}
     .loader-bar span{ animation:none; width:100%;}
   }
+
+  /* ===== LAUNCH BANNER ===== */
+  #launchBanner{
+    background:linear-gradient(90deg, var(--rust), #8f2e21);
+    color:#fff; position:relative; z-index:250;
+  }
+  .launch-inner{ display:flex; align-items:center; justify-content:center; gap:14px; padding:10px 44px; position:relative; text-align:center;}
+  .launch-inner .launch-text{ font-size:14px; font-weight:700; letter-spacing:.03em;}
+  .launch-close{
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,0.18); border:none; color:#fff; width:22px; height:22px; border-radius:50%;
+    cursor:pointer; font-size:14px; line-height:1; display:flex; align-items:center; justify-content:center;
+  }
+  .launch-close:hover{ background:rgba(255,255,255,0.32);}
+  @media (max-width:600px){
+    .launch-inner{ padding:9px 36px;}
+    .launch-inner .launch-text{ font-size:12.5px;}
+  }
 </style>
 </head>
 <body>
 
+<div id="launchBanner">
+  <div class="launch-inner">
+    <span class="launch-text" data-en="🚀 Launching Soon" data-kn="🚀 ಶೀಘ್ರದಲ್ಲೇ ಪ್ರಾರಂಭ">🚀 Launching Soon</span>
+    <button class="launch-close" id="launchClose" aria-label="Close">✕</button>
+  </div>
+</div>
+
 <div id="siteLoader">
   <div class="loader-logo"><img src="https://ik.imagekit.io/2bihaekhf/expert%20navodaya/file_0000000038fc8211be5bcec0ae5f15e0.png?updatedAt=1786188456948" alt="Expert Navodaya Coaching Centre"></div>
-  <div class="loader-text" data-en="Expert Navodaya Coaching Centre" data-kn="ಎಕ್ಸ್‌ಪರ್ಟ್ ನವೋದಯ ಕೋಚಿಂಗ್ ಸೆಂಟರ್">Expert Navodaya Coaching Centre</div>
+  <div class="loader-text" data-en="🚀 Launching Soon" data-kn="🚀 ಶೀಘ್ರದಲ್ಲೇ ಪ್ರಾರಂಭ">🚀 Launching Soon</div>
   <div class="loader-bar"><span></span></div>
+</div>
+
+<div id="launchPopup">
+  <div class="launch-popup-card">
+    <button class="launch-popup-close" id="launchPopupClose" aria-label="Close">✕</button>
+    <div class="launch-popup-emoji">🚀</div>
+    <h3 data-en="Website Launching Soon!" data-kn="ವೆಬ್‌ಸೈಟ್ ಶೀಘ್ರದಲ್ಲೇ ಪ್ರಾರಂಭ!">Website Launching Soon!</h3>
+    <p data-en="Thanks for visiting Expert Navodaya Coaching Centre. Our website is being finalised — admissions enquiries are open now, so feel free to reach out." data-kn="ಎಕ್ಸ್‌ಪರ್ಟ್ ನವೋದಯ ಕೋಚಿಂಗ್ ಸೆಂಟರ್‌ಗೆ ಭೇಟಿ ನೀಡಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು. ನಮ್ಮ ವೆಬ್‌ಸೈಟ್ ಅಂತಿಮಗೊಳ್ಳುತ್ತಿದೆ — ಪ್ರವೇಶ ವಿಚಾರಣೆಗಳು ಈಗ ತೆರೆದಿವೆ, ಸಂಪರ್ಕಿಸಲು ಹಿಂಜರಿಯಬೇಡಿ.">Thanks for visiting Expert Navodaya Coaching Centre. Our website is being finalised — admissions enquiries are open now, so feel free to reach out.</p>
+    <a href="#admission" class="btn btn-primary" id="launchPopupCta" data-en="Enquire Now" data-kn="ಈಗ ವಿಚಾರಿಸಿ">Enquire Now</a>
+  </div>
 </div>
 
 <!-- ============ HEADER ============ -->
@@ -873,6 +935,7 @@
   <button class="fab fab-top" id="scrollTop" aria-label="Scroll to top" title="Top">↑</button>
   <a class="fab fab-call" href="tel:+919591384193" aria-label="Call">📞</a>
   <a class="fab fab-wa" href="https://wa.me/919591384193?text=Hello%2C%20I%20am%20interested%20in%20Navodaya%20coaching%20admission." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a class="fab fab-review" href="https://share.google/vmbIhGgmWJ1i3q41u" target="_blank" rel="noopener" aria-label="Google Review" title="Rate us on Google">⭐</a>
 </div>
 
 <script>
@@ -928,7 +991,7 @@
     window.scrollTo({ top:0, behavior:'smooth' });
   });
 
-  // ===== Site Loader (2s) =====
+  // ===== Site Loader (3s) =====
   window.addEventListener('load', function(){
     setTimeout(function(){
       var loader = document.getElementById('siteLoader');
@@ -936,8 +999,41 @@
         loader.classList.add('hide');
         setTimeout(function(){ loader.remove(); }, 600);
       }
-    }, 2000);
+    }, 3000);
   });
+
+  // ===== Launch Banner =====
+  (function initLaunchBanner(){
+    var banner = document.getElementById('launchBanner');
+    var closeBtn = document.getElementById('launchClose');
+    if(!banner) return;
+    var dismissed = false;
+    try{ dismissed = sessionStorage.getItem('enc_launch_dismissed') === '1'; }catch(e){}
+    if(dismissed){ banner.style.display = 'none'; }
+    closeBtn.addEventListener('click', function(){
+      banner.style.display = 'none';
+      try{ sessionStorage.setItem('enc_launch_dismissed', '1'); }catch(e){}
+    });
+  })();
+
+  // ===== Launch Popup (once per session) =====
+  (function initLaunchPopup(){
+    var popup = document.getElementById('launchPopup');
+    var closeBtn = document.getElementById('launchPopupClose');
+    var cta = document.getElementById('launchPopupCta');
+    if(!popup) return;
+    var alreadyShown = false;
+    try{ alreadyShown = sessionStorage.getItem('enc_popup_shown') === '1'; }catch(e){}
+    if(alreadyShown) return;
+    setTimeout(function(){
+      popup.classList.add('show');
+      try{ sessionStorage.setItem('enc_popup_shown', '1'); }catch(e){}
+    }, 2500);
+    function closePopup(){ popup.classList.remove('show'); }
+    closeBtn.addEventListener('click', closePopup);
+    popup.addEventListener('click', function(e){ if(e.target === popup) closePopup(); });
+    if(cta){ cta.addEventListener('click', closePopup); }
+  })();
 
   // ===== Footer year =====
   document.getElementById('year').textContent = new Date().getFullYear();
