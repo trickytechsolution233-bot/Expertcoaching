@@ -127,10 +127,26 @@
   /* ===== HERO ===== */
   .hero{
     position:relative; padding:70px 0 90px; overflow:hidden;
-    background:
-      radial-gradient(circle at 85% 10%, rgba(211,163,57,0.16), transparent 45%),
-      var(--paper);
+    background-color:var(--navy);
+    background-image:
+      linear-gradient(rgba(10,22,40,0.88), rgba(10,22,40,0.85)),
+      url('https://ik.imagekit.io/2bihaekhf/expert%20navodaya/expert%20coaching%20pics/IMG_20260420_072801.jpg.jpeg?updatedAt=1786189705837');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
   }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(circle at 85% 10%, rgba(211,163,57,0.22), transparent 45%);
+    pointer-events:none;
+  }
+  .hero .container{ position:relative; z-index:1;}
+  .hero .hero-eyebrow{ color:var(--gold-2) !important;}
+  .hero h1{ color:#fff !important;}
+  .hero h1 .accent{ color:var(--gold-2) !important;}
+  .hero p.lead{ color:rgba(255,255,255,0.92) !important;}
+  .hero .hstat b{ color:#fff !important;}
+  .hero .hstat span{ color:rgba(255,255,255,0.75) !important;}
   .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
   .hero-eyebrow{ font-family:var(--mono); font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); font-weight:700; margin-bottom:18px;}
   .hero h1{ font-size:46px; line-height:1.1; margin-bottom:20px; color:var(--navy);}
@@ -459,7 +475,7 @@
       <p class="lead" data-en="Expert Navodaya Coaching Centre, MK Hubli trains Class 5 students for the Jawahar Navodaya Vidyalaya Selection Test — with structured practice, mock tests, and both English & Kannada medium teaching." data-kn="ಎಕ್ಸ್‌ಪರ್ಟ್ ನವೋದಯ ಕೋಚಿಂಗ್ ಸೆಂಟರ್, ಎಂ.ಕೆ ಹುಬ್ಬಳ್ಳಿ 5ನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜವಾಹರ್ ನವೋದಯ ವಿದ್ಯಾಲಯ ಆಯ್ಕೆ ಪರೀಕ್ಷೆಗೆ ರಚನಾತ್ಮಕ ಅಭ್ಯಾಸ, ಮಾಕ್ ಟೆಸ್ಟ್ ಮತ್ತು ಇಂಗ್ಲಿಷ್ & ಕನ್ನಡ ಮಾಧ್ಯಮದಲ್ಲಿ ತರಬೇತಿ ನೀಡುತ್ತದೆ.">Expert Navodaya Coaching Centre, MK Hubli trains Class 5 students for the Jawahar Navodaya Vidyalaya Selection Test — with structured practice, mock tests, and both English & Kannada medium teaching.</p>
       <div class="hero-ctas">
         <a href="#admission" class="btn btn-primary" data-en="Apply for Admission" data-kn="ಪ್ರವೇಶಕ್ಕೆ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ">Apply for Admission</a>
-        <a href="tel:+919591384193" class="btn btn-outline" data-en="Call Now" data-kn="ಈಗ ಕರೆ ಮಾಡಿ">Call Now</a>
+        <a href="tel:+919591384193" class="btn btn-outline" style="border-color:#fff; color:#fff;" data-en="Call Now" data-kn="ಈಗ ಕರೆ ಮಾಡಿ">Call Now</a>
       </div>
       <div class="hero-stats">
         <div class="hstat"><b>500+</b><span data-en="Students Guided" data-kn="ಮಾರ್ಗದರ್ಶಿತ ವಿದ್ಯಾರ್ಥಿಗಳು">Students Guided</span></div>
