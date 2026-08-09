@@ -77,6 +77,30 @@
   html[data-lang="en"] [data-kn-only]{display:none !important;}
   html[data-lang="kn"] [data-en-only]{display:none !important;}
 
+  /* ===== SUCCESS BANNER ===== */
+  #launchBanner{
+    position:relative; z-index:150; background:var(--green); color:#fff;
+    overflow:hidden;
+  }
+  #launchBanner .lb-inner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    padding:10px 20px; text-align:center; font-size:13.5px; font-weight:600;
+    flex-wrap:wrap;
+  }
+  #launchBanner .lb-icon{ font-size:15px; }
+  #launchBanner .lb-close{
+    position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,0.18); border:none; color:#fff; width:22px; height:22px;
+    border-radius:50%; cursor:pointer; font-size:13px; line-height:1; display:flex;
+    align-items:center; justify-content:center;
+  }
+  #launchBanner .lb-close:hover{ background:rgba(255,255,255,0.32); }
+  #launchBanner.hide{ display:none; }
+  @media (max-width:600px){
+    #launchBanner .lb-inner{ font-size:12px; padding:9px 40px 9px 14px; }
+    #launchBanner .lb-close{ right:10px; }
+  }
+
   /* ===== NAVBAR ===== */
   header{
     position:sticky; top:0; z-index:200;
@@ -363,6 +387,7 @@
   .fab-wa{ background:#25D366;}
   .fab-call{ background:var(--rust);}
   .fab-review{ background:#4285F4;}
+  .fab-yt{ background:#FF0000;}
   .fab-top{ background:var(--navy); width:42px; height:42px; align-self:flex-end; opacity:0.85;}
 
   /* ===== ANIM ===== */
@@ -405,8 +430,6 @@
     .fab{ width:48px; height:48px; font-size:16px;}
     .fab-stack{ right:14px; bottom:14px; gap:10px;}
     .lang-toggle span{ padding:6px 10px; font-size:11px;}
-    .loader-logo{ width:68px; height:68px;}
-    .loader-text{ font-size:13px;}
   }
   @media (max-width:380px){
     .hero h1{ font-size:24px;}
@@ -415,37 +438,17 @@
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important;}
   }
-
-  /* ===== LOADER ===== */
-  #siteLoader{
-    position:fixed; inset:0; z-index:9999; background:var(--navy);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
-    transition:opacity .5s ease, visibility .5s ease;
-  }
-  #siteLoader.hide{ opacity:0; visibility:hidden; pointer-events:none;}
-  .loader-logo{
-    width:84px; height:84px; border-radius:50%; overflow:hidden; border:3px solid var(--gold);
-    background:var(--navy); animation:loaderPulse 1.4s ease-in-out infinite;
-  }
-  .loader-logo img{ width:100%; height:100%; object-fit:cover;}
-  .loader-text{ font-family:var(--display); color:#fff; font-size:15px; letter-spacing:.03em; text-align:center; padding:0 20px;}
-  .loader-bar{ width:140px; height:3px; background:rgba(245,241,230,0.2); border-radius:3px; overflow:hidden;}
-  .loader-bar span{ display:block; height:100%; width:0%; background:var(--gold); animation:loaderFill 3s ease forwards;}
-  @keyframes loaderPulse{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.06);} }
-  @keyframes loaderFill{ from{ width:0%;} to{ width:100%;} }
-  @media (prefers-reduced-motion: reduce){
-    #siteLoader{ transition:none;}
-    .loader-logo{ animation:none;}
-    .loader-bar span{ animation:none; width:100%;}
-  }
 </style>
 </head>
 <body>
 
-<div id="siteLoader">
-  <div class="loader-logo"><img src="https://ik.imagekit.io/2bihaekhf/expert%20navodaya/file_0000000038fc8211be5bcec0ae5f15e0.png?updatedAt=1786188456948" alt="Expert Navodaya Coaching Centre"></div>
-  <div class="loader-text" data-en="🚀 Launching Soon" data-kn="🚀 ಶೀಘ್ರದಲ್ಲೇ ಪ್ರಾರಂಭ">🚀 Launching Soon</div>
-  <div class="loader-bar"><span></span></div>
+<!-- ============ LAUNCH SUCCESS BANNER ============ -->
+<div id="launchBanner">
+  <div class="lb-inner">
+    <span class="lb-icon">✅</span>
+    <span data-en="Website launched successfully! Admissions for the Navodaya Selection Test are now open." data-kn="ವೆಬ್‌ಸೈಟ್ ಯಶಸ್ವಿಯಾಗಿ ಪ್ರಾರಂಭವಾಗಿದೆ! ನವೋದಯ ಆಯ್ಕೆ ಪರೀಕ್ಷೆಗೆ ಪ್ರವೇಶ ಈಗ ತೆರೆದಿದೆ.">Website launched successfully! Admissions for the Navodaya Selection Test are now open.</span>
+  </div>
+  <button class="lb-close" id="bannerClose" aria-label="Close banner">✕</button>
 </div>
 
 <!-- ============ HEADER ============ -->
@@ -893,6 +896,7 @@
           <a href="#" aria-label="Facebook">f</a>
           <a href="#" aria-label="Instagram">ig</a>
           <a href="https://wa.me/919591384193" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a>
+          <a href="https://youtube.com/@sundarpatil1487?si=cVPzCO5SLpCxmUta" target="_blank" rel="noopener" aria-label="YouTube">yt</a>
         </div>
       </div>
       <div>
@@ -927,6 +931,7 @@
   <a class="fab fab-call" href="tel:+919591384193" aria-label="Call">📞</a>
   <a class="fab fab-wa" href="https://wa.me/919591384193?text=Hello%2C%20I%20am%20interested%20in%20Navodaya%20coaching%20admission." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
   <a class="fab fab-review" href="https://share.google/vmbIhGgmWJ1i3q41u" target="_blank" rel="noopener" aria-label="Google Review" title="Rate us on Google">⭐</a>
+  <a class="fab fab-yt" href="https://youtube.com/@sundarpatil1487?si=cVPzCO5SLpCxmUta" target="_blank" rel="noopener" aria-label="YouTube Channel" title="Subscribe on YouTube">▶️</a>
 </div>
 
 <script>
@@ -982,19 +987,26 @@
     window.scrollTo({ top:0, behavior:'smooth' });
   });
 
-  // ===== Site Loader (3s) =====
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var loader = document.getElementById('siteLoader');
-      if(loader){
-        loader.classList.add('hide');
-        setTimeout(function(){ loader.remove(); }, 600);
-      }
-    }, 3000);
-  });
-
   // ===== Footer year =====
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== Launch banner close (auto-hide after 6s, or manual close; remembered per session) =====
+  (function initBanner(){
+    var banner = document.getElementById('launchBanner');
+    var closeBtn = document.getElementById('bannerClose');
+    if(!banner) return;
+    var dismissed = false;
+    try{ dismissed = sessionStorage.getItem('enc_banner_dismissed') === '1'; }catch(e){}
+    if(dismissed){ banner.classList.add('hide'); return; }
+    closeBtn.addEventListener('click', function(){
+      banner.classList.add('hide');
+      try{ sessionStorage.setItem('enc_banner_dismissed', '1'); }catch(e){}
+    });
+    setTimeout(function(){
+      banner.classList.add('hide');
+      try{ sessionStorage.setItem('enc_banner_dismissed', '1'); }catch(e){}
+    }, 8000);
+  })();
 
   // ===== Hostel enquiry WhatsApp link =====
   document.getElementById('hostelWaBtn').href =
